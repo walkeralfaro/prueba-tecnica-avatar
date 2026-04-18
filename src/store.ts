@@ -4,7 +4,6 @@ import type { Pokemon, SimplePokemon } from "./schemas";
 
 type PokemonsStore = {
   error: string | null;
-  loading: boolean;
   pokemon: Pokemon | null;
   pokemons: SimplePokemon[];
   fetchPokemons: () => Promise<void>;
@@ -22,15 +21,14 @@ export const usePokemonsStore = create<PokemonsStore>((set) => ({
   },
   fetchPokemonByName: async (name: string) => {
     try {
-      set({ loading: true, error: null, pokemon: null });
+      set({ error: null });
 
       const pokemon = await getPokemonByName(name);
 
-      set({ pokemon, loading: false });
+      set({ pokemon});
     } catch (err: any) {
       set({
         error: err.message,
-        loading: false,
         pokemon: null,
       });
     }

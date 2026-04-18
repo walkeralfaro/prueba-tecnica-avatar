@@ -1,6 +1,8 @@
 import { useEffect } from "react"
-import { Link, useParams } from "react-router"
+import { useParams } from "react-router"
 import { usePokemonsStore } from "../store"
+import Loading from "../components/loading"
+import Error from "../components/error"
 
 export default function PokemonDetail() {
   const { name } = useParams()
@@ -8,7 +10,6 @@ export default function PokemonDetail() {
   const pokemon = usePokemonsStore((state) => state.pokemon)
   const fetchPokemonByName = usePokemonsStore((state) => state.fetchPokemonByName)
   const error = usePokemonsStore((state) => state.error)
-  const loading = usePokemonsStore((state) => state.loading)
 
   useEffect(() => {
     if (name) {
@@ -16,32 +17,14 @@ export default function PokemonDetail() {
     }
   }, [name])
 
-  // Loading
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-900">
-        <div className="animate-pulse text-slate-400 text-xl">
-          Loading Pokémon...
-        </div>
-      </div>
-    )
-  }
-
   // Error
   if (error) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 text-white">
-        <h1 className="text-3xl font-bold mb-2">Not Found</h1>
-        <p className="text-slate-400">{error}</p>
+    return <Error error={error} />
+  }
 
-        <Link
-          to="/"
-          className="mt-6 px-4 py-2 bg-slate-700 rounded hover:bg-slate-600 inline-block"
-        >
-          Go Home
-        </Link>
-      </div>
-    )
+  // Loading
+  if (!pokemon || pokemon.name !== name) {
+    return <Loading />
   }
 
   // Pokemon
