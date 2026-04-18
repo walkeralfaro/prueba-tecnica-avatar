@@ -17,7 +17,7 @@ export default function PokemonDetail() {
   }, [name])
 
   // Loading
-  if (loading) {
+  if (loading || !pokemon) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-900">
         <div className="animate-pulse text-slate-400 text-xl">
