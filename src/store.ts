@@ -22,7 +22,7 @@ export const usePokemonsStore = create<PokemonsStore>((set) => ({
   },
   fetchPokemonByName: async (name: string) => {
     try {
-      set({ loading: true, error: null });
+      set({ loading: true, error: null, pokemon: null });
 
       const pokemon = await getPokemonByName(name);
 
