@@ -8,7 +8,7 @@ type PokemonCardProp = {
 export default function PokemonCard({ pokemon }: PokemonCardProp) {
   return (
     <Link to={`${pokemon.name}`}>
-      <div className=" rounded-lg p-3 w-50 h-60 bg-slate-700 transition hover:scale-105 hover:bg-slate-500 flex flex-col hover:cursor-pointer">
+      <div className=" rounded-lg p-3 w-full min-w-50 h-60 bg-slate-700 transition hover:scale-105 hover:bg-slate-500 flex flex-col hover:cursor-pointer">
 
         <p className="text-orange-400 text-xl font-bold italic">{`#${pokemon.id}`}</p>
 
