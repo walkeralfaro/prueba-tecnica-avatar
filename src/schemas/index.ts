@@ -29,11 +29,6 @@ export const PokemonSchema = z.object({
   weight: z.number(),
 
   sprites: z.object({
-    front_default: z.string(),
-    back_default: z.string(),
-    front_shiny: z.string(),
-    back_shiny: z.string(),
-
     other: z.object({
       dream_world: z.object({
         front_default: z.string(),
