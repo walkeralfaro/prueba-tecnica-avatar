@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { usePokemonsStore } from "../store"
 import PokemonCard from "../components/pokemon-card"
+import Footer from "../components/footer"
 
 export default function Home() {
 
@@ -33,6 +34,8 @@ export default function Home() {
           ))}
         </article>
       </main>
+      
+      <Footer />
     </>
   )
 }

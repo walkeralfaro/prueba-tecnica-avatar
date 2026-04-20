@@ -6,6 +6,7 @@ import Error from "../components/error"
 import EvolutionChain from "../components/evolution-chaint"
 import ButtonGoHome from "../components/ui/button-go-home"
 import ButtonBackNavigation from "../components/ui/button-back-navigation"
+import Footer from "../components/footer"
 
 export default function PokemonDetail() {
   const { name } = useParams()
@@ -34,12 +35,13 @@ export default function PokemonDetail() {
   // Pokemon
   if (pokemon) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-slate-900 to-slate-800 text-white p-6">
+      <>
+      <div className=" bg-linear-to-br text-white p-6">
 
         <div className="max-w-4xl mx-auto">
 
           {/* Card */}
-          <div className="bg-slate-800/60 backdrop-blur rounded-2xl shadow-xl p-6 md:p-10">
+          <div className="bg-slate-800 backdrop-blur rounded-2xl shadow-xl p-6 md:p-10">
 
             <div className="mb-8 flex justify-between">
               <ButtonBackNavigation />
@@ -121,6 +123,8 @@ export default function PokemonDetail() {
           </div>
         </div>
       </div>
+        <Footer />
+      </>
     )
   }
 

@@ -7,7 +7,7 @@ export default function PokemonBadge({ pokemon, pokemonName }: { pokemon: Specie
   return (
     <Link to={`/${pokemon.name}`}>
       
-    <div className={` ${pokemonName === pokemon.name ? 'bg-orange-400 text-white' : 'bg-slate-600 text-orange-400'} rounded-full w-40 h-40 flex flex-col items-center justify-center overflow-hidden shadow hover:cursor-pointer`}>
+    <div className={` ${pokemonName === pokemon.name ? 'border-orange-400 border-2 text-orange-400' : 'bg-slate-700 text-white'} rounded-full w-40 h-40 flex flex-col items-center justify-center overflow-hidden shadow hover:cursor-pointer`}>
       
       <img
         className="h-20"
