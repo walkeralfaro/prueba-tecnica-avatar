@@ -101,7 +101,12 @@ export default function PokemonDetail() {
             <h2 className="text-2xl font-bold mb-8 mt-12">Evolution Chain</h2>
 
 
-            <EvolutionChain evolutionChain={evolutionChain} pokemonName={pokemon.name} />
+            {evolutionChain && (
+              <EvolutionChain
+                evolutionChain={evolutionChain}
+                pokemonName={pokemon.name}
+              />
+            )}
 
 
           </div>
