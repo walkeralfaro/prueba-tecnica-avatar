@@ -3,12 +3,14 @@ import { useParams } from "react-router"
 import { usePokemonsStore } from "../store"
 import Loading from "../components/loading"
 import Error from "../components/error"
+import EvolutionChain from "../components/evolution-chaint"
 
 export default function PokemonDetail() {
   const { name } = useParams()
 
   const pokemon = usePokemonsStore((state) => state.pokemon)
   const fetchPokemonByName = usePokemonsStore((state) => state.fetchPokemonByName)
+  const evolutionChain = usePokemonsStore((state) => state.evolutionChain)
   const error = usePokemonsStore((state) => state.error)
 
   useEffect(() => {
@@ -78,7 +80,7 @@ export default function PokemonDetail() {
             </div>
 
             {/* Divider */}
-            <div className="my-8 border-t border-slate-700" />
+            <hr className="my-8 border-t border-slate-700" />
 
             {/* Moves */}
             <div>
@@ -95,6 +97,12 @@ export default function PokemonDetail() {
                 ))}
               </div>
             </div>
+
+            <h2 className="text-2xl font-bold mb-8 mt-12">Evolution Chain</h2>
+
+
+            <EvolutionChain evolutionChain={evolutionChain} pokemonName={pokemon.name} />
+
 
           </div>
         </div>

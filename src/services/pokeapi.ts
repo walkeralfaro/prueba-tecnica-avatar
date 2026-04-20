@@ -1,5 +1,6 @@
 import axios from "axios";
 import { PokemonSchema, PokemonsSchema } from "../schemas";
+import { extractEvolutionChain } from "../utils/evolution";
 
 export async function getPokemons() {
   const url = `https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`;
@@ -37,4 +38,27 @@ export async function getPokemonByName(name: string) {
 
     throw new Error("Unexpected error");
   }
+}
+
+export async function getEvolutionChainByPokemon(name: string) {
+  // 1. Pokemon
+  const pokemonRes = await axios(
+    `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`
+  );
+
+  const speciesUrl = pokemonRes.data.species.url;
+
+  // 2. Species
+  const speciesRes = await axios(speciesUrl);
+
+  const evolutionUrl = speciesRes.data.evolution_chain.url;
+
+  // 3. Evolution chain
+  const evolutionRes = await axios(evolutionUrl);
+
+  const evolutionNames = extractEvolutionChain(evolutionRes.data.chain)
+
+  console.log(evolutionNames)
+
+  return evolutionNames;
 }
