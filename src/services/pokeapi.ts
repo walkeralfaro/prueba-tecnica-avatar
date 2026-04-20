@@ -58,7 +58,5 @@ export async function getEvolutionChainByPokemon(name: string) {
 
   const evolutionNames = extractEvolutionChain(evolutionRes.data.chain)
 
-  console.log(evolutionNames)
-
   return evolutionNames;
 }

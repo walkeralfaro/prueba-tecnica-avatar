@@ -4,6 +4,8 @@ import { usePokemonsStore } from "../store"
 import Loading from "../components/loading"
 import Error from "../components/error"
 import EvolutionChain from "../components/evolution-chaint"
+import ButtonGoHome from "../components/ui/button-go-home"
+import ButtonBackNavigation from "../components/ui/button-back-navigation"
 
 export default function PokemonDetail() {
   const { name } = useParams()
@@ -33,10 +35,17 @@ export default function PokemonDetail() {
   if (pokemon) {
     return (
       <div className="min-h-screen bg-linear-to-br from-slate-900 to-slate-800 text-white p-6">
+
         <div className="max-w-4xl mx-auto">
 
           {/* Card */}
           <div className="bg-slate-800/60 backdrop-blur rounded-2xl shadow-xl p-6 md:p-10">
+
+            <div className="mb-8 flex justify-between">
+              <ButtonBackNavigation />
+              <ButtonGoHome />
+            </div>
+
 
             {/* Header */}
             <div className="flex flex-col md:flex-row items-center gap-8">
