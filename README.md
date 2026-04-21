@@ -1,4 +1,4 @@
-# Avatar Pokedex
+# Pokedex
 
 Explora los primeros 151 Pokémon con información detallada incluyendo tipos, peso, movimientos y cadena de evolución.
 
